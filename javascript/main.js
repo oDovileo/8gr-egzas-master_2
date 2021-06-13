@@ -15,12 +15,12 @@ countAveragePriceOfMeals(data);
 isHigherAveragePriceOfMealsInKaunas(data);
 countPercentegeOfMealsVegetarian(data);
 isMoreOfVegetarianMealsInVilniusPercentage(data); 
-
+recursion(1);
 
 
 //1. Kiek yra kavinių?
 function countCafes(data) {
-    console.log("Kavinių yra", data.length);
+    console.log("1. Kavinių yra", data.length, ".");
 }
 
 //2. Kiek yra kavinių yra Kaune?
@@ -32,13 +32,13 @@ function countKaunasCafes(data) {
         }
     });
    
-    console.log("Kavinių Kaune yra", count);
+    console.log("2. Kavinių Kaune yra", count, ".");
     
 }
    
 //3. Kiek pirmoje kavinėje yra patiekalų?
 function countFirstCafeMealNumber(data) {
-    console.log("Pirmoje kavinėje patiekalų yra", data[0].meniu.length);
+    console.log("3. Pirmoje kavinėje patiekalų yra", data[0].meniu.length, ".");
     
 }
 
@@ -54,7 +54,7 @@ function countDifferentMealsKaunas(data) {
             });
         }
     });
-    console.log("Skirtingų meniu Kaune yra", meniu.length);
+    console.log("4. Skirtingų meniu Kaune yra", meniu.length, ".");
 }
 
 
@@ -69,7 +69,7 @@ function countAveragePriceOfMeals(data) {
         });
     }); 
     let result = Math.round(sum / count * 100) / 100;
-    console.log ("Vidutinė patiekalų kaina tinkle yra", result);
+    console.log ("5. Vidutinė patiekalų kaina tinkle yra", result, ".");
 
 }
 
@@ -95,7 +95,7 @@ function isHigherAveragePriceOfMealsInKaunas(data) {
     });
     let resultKaunas = Math.round(sumKaunas / countKaunas * 100) / 100;
     let resultOthers = Math.round(sumOthers / countOthers * 100) / 100;
-    console.log("Ar vidudinė patiekalų kaina Kauno filialuose aukštesnė:", resultKaunas > resultOthers);
+    console.log("6. Ar vidudinė patiekalų kaina Kauno filialuose aukštesnė:", resultKaunas > resultOthers, ".");
 }
 
 //7. Kiek procentų patiekalų yra vegetariški? (visame tinkle)
@@ -110,7 +110,7 @@ function countPercentegeOfMealsVegetarian(data) {
             }
         });
         let result = Math.round(countVeg / (count / 100) * 100) / 100;
-        console.log("Vegetariškų patiekalų procentas", result);
+        console.log("7. Vegetariškų patiekalų procentas", result, ".");
     });
     
 }
@@ -124,23 +124,35 @@ function isMoreOfVegetarianMealsInVilniusPercentage(data) {
     data.forEach(kavine => {
         kavine.meniu.forEach(meal => {
 
-            if (kavine.adresas.toLowerCase().includes('vilnius')) {
+            if (kavine.adresas.toLowerCase().includes('vilnius')){
                 countVilnius++;
-                if (Object.values(meal)[1] == "taip") {
+                if (Object.values(meal)[1] == "taip"){
                     countVegVilnius++;
                 }
             } else {
                 countOther++;
-                if (Object.values(meal)[1] == "taip") {
+                if (Object.values(meal)[1] == "taip"){
                     countVegOther++;
                 }
             }
         });
     });
     let resultVilnius = countVegVilnius / (countVilnius / 100);
-    console.log(countVegVilnius, countVilnius);
-    console.log(countVegOther, countOther);
+    //console.log(countVegVilnius, countVilnius);
+    //console.log(countVegOther, countOther);
     let resultOther = countVegOther / (countOther / 100);
-    console.log("Ar Vilniuje procentaliai daugiau vegetariškų patiekalų:", resultVilnius > resultOther);
+    console.log("8. Ar Vilniuje procentaliai daugiau vegetariškų patiekalų:", resultVilnius > resultOther, ".");
     
 }
+
+//9. Taip pat parašykite funkciją, kuri: išsikviesdama save pačią atspausdina skaičius: nuo 1 iki 10.
+function recursion(number){
+    if (number > 10){
+     return;        
+    }else{
+    recursion(number + 1);
+    console.log(number);
+    }
+} 
+
+    
